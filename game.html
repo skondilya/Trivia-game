@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang ="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<title>TRIVIA</title>
+</head>
+
+<body>
+	<h3>TRIVIA GAME</h3>
+	<div class="score">	
+	</div>
+	<div class="question">	
+	</div>
+
+	<script type= "text/javascript">
+		var questions = {
+			q1 : ["Shark is a mammal","f"],
+			q2 : ["There are 28 countries in europe union","t"],
+			q3 : ["Dogs see more than two colours","t"],
+			q4 : ["Sydney is the captial of Australia","f"],
+			q5 : ["1 pound equal to 16 ounces","t"],
+			q6 : ["There are 41 countries in europe","f"],
+			q7 : ["USA got its independence in the year 1975","f"],
+			q8 : ["Chocolate can be lethal to dogs.","t"],
+			q9 : ["Toy Story is the first feature film created in Computer-Generated Imagery","t"],
+			q10 : ["Silicon Valley is a suburb of Los Angeles.","f"]
+		};
+
+		var score=0;
+		var questionIndex = 0; 
+		var questionArray= [questions.q1, questions.q2, questions.q3, questions.q4, questions.q5, questions.q6, questions.q7, questions.q8, questions.q9, questions.q10];
+
+		function QuestionRender() {
+			if(questionIndex <= (questionArray.length-1 )) {
+				document.querySelector('.question').innerHTML = questionArray[questionIndex][0];
+			} else {
+				document.querySelector('.question').innerHTML = "Game Over";
+				document.querySelector('.score').innerHTML = "Final Score is " + score + " out of " + (questionArray.length+1) ;
+			}
+
+		}
+
+		function updateScore() {
+			document.querySelector('.score').innerHTML = "Final Score is " + score ;
+		}
+
+		QuestionRender();
+		updateScore();
+
+		document.onkeyup = function(event){
+			if(questionIndex === questionArray.length ) {
+				return;
+			}
+
+			var userInput  = (event.key).toLowerCase();
+			if((userInput==='t') || (userInput==='f')){
+				if(questionArray[questionIndex][1] = userInput){
+					alert("Correct!");
+					score++;
+					updateScore();
+				} else {
+					alert("Wrong Answer!");
+				}
+				questionIndex++;
+				QuestionRender();
+			}
+		};
+
+	</script>
+</body>
+
+		
+
+
+
+
+	</script>
+</body>
+
+</html>
+
